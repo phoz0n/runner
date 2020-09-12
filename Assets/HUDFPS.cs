@@ -25,7 +25,7 @@ public class HUDFPS : MonoBehaviour
     {
 
         timeleft = updateInterval;
-        Application.targetFrameRate = 300;
+        Application.targetFrameRate = 60;
     }
 
     void Update()
@@ -43,13 +43,13 @@ public class HUDFPS : MonoBehaviour
             GetComponent<Text>().text = format;
 
             if (fps < 30)
-                GetComponent<Text>().material.color = Color.yellow;
+                GetComponent<Text>().color = Color.yellow;
             else
                 if (fps < 10)
-                GetComponent<Text>().material.color = Color.red;
+                GetComponent<Text>().color = Color.red;
             else
-                GetComponent<Text>().material.color = Color.green;
-            //	DebugConsole.Log(format,level);
+                GetComponent<Text>().color = Color.green;
+
             timeleft = updateInterval;
             accum = 0.0F;
             frames = 0;

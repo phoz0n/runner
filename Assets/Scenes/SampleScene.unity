@@ -254,6 +254,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84905c54e95f46a4f978acdba83d1bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &46022121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46022118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe07b85de4e81114fb267284a5d154e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 180
 --- !u!1 &331520134
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe07b85de4e81114fb267284a5d154e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 666
 --- !u!65 &331520136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -354,7 +368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331520134}
   m_LocalRotation: {x: 0.14644665, y: -0.35355344, z: 0.35355344, w: -0.8535534}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalPosition: {x: -0.45, y: 0, z: -2.5}
   m_LocalScale: {x: 0.6, y: 0.59999996, z: 0.6}
   m_Children: []
   m_Father: {fileID: 46022119}
@@ -421,7 +435,7 @@ GameObject:
   - component: {fileID: 655051480}
   - component: {fileID: 655051479}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: FPSCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea1a1e84d92edf4aa13a579e840efbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiText: {fileID: 0}
   updateInterval: 0.5
 --- !u!114 &1328674412
 MonoBehaviour:
@@ -685,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.19607842, g: 1, b: 0.21922676, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
