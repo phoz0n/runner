@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class Moving : MonoBehaviour
 {
-    private Vector3 position;
-    private float width;
-    private float lastPosX = 0f;
-    private float beginTouchPositionX = 0f;
+    private Touch touch;
+    private float Speedmodifier;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        width = (float)Screen.width / 2.0f;
-
-        // Position used for the cube.
-        position = new Vector3(0.0f, 0.0f, 0.0f);
-
-        Application.targetFrameRate = 60;
+        Speedmodifier = 0.01f;
     }
 
     // Update is called once per frame
@@ -27,20 +20,13 @@ public class Moving : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began) {
-                beginTouchPositionX = touch.position.x;
+            if (touch.phase == TouchPhase.Moved)
+            {
+                transform.position = new Vector3(
+                    Mathf.Clamp(transform.position.x + touch.deltaPosition.x * Speedmodifier, -2, 2),
+                    transform.position.y,
+                    transform.position.z);
             }
-            // Move the cube if the screen has the finger moving.
-            Vector2 pos = touch.position;
-            pos.x = (pos.x - width) / width;
-            float positionLocked = Mathf.Clamp((pos.x - beginTouchPositionX) * 2f, -2.0f, 2.0f);
-
-            position.x = Mathf.Lerp(lastPosX, positionLocked, 0.95f);
-
-            lastPosX = positionLocked;
-            // Position the cube.
-            transform.position = position;
-
         }
     }
 }
