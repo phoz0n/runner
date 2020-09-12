@@ -6,6 +6,7 @@ public class Moving : MonoBehaviour
 {
     private Vector3 position;
     private float width;
+    private float lastPosX = 0f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,16 +27,16 @@ public class Moving : MonoBehaviour
             Touch touch = Input.GetTouch(0);
 
             // Move the cube if the screen has the finger moving.
-            if (touch.phase == TouchPhase.Moved)
-            {
-                Vector2 pos = touch.position;
-                pos.x = (pos.x - width) / width;
-                float positionLocked = Mathf.Clamp(pos.x, -2.0f, 2.0f);
-                position = new Vector3(positionLocked, 0.0f, 0.0f);
+            Vector2 pos = touch.position;
+            pos.x = (pos.x - width) / width;
+            float positionLocked = Mathf.Clamp(pos.x * 2f, -2.0f, 2.0f);
 
-                // Position the cube.
-                transform.position = position;
-            }
+            position.x = Mathf.Lerp(lastPosX, positionLocked, 0.95f);
+
+            lastPosX = positionLocked;
+            // Position the cube.
+            transform.position = position;
+
         }
     }
 }
