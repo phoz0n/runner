@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Moving : MonoBehaviour
 {
     private Touch touch;
-    private float Speedmodifier;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Speedmodifier = 0.01f;
-    }
+    private float Speedmodifier = 0.01f;
+    private float currentTilting = 0f;
 
-    // Update is called once per frame
     void Update()
     {
         // Handle screen touches.
@@ -22,11 +15,17 @@ public class Moving : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
+                float amountTilting = Mathf.Clamp(currentTilting + touch.deltaPosition.x, 5f, -5f);
+
+                currentTilting = Mathf.Lerp(currentTilting, amountTilting, 0.1f);
+
                 transform.position = new Vector3(
-                    Mathf.Clamp(transform.position.x + touch.deltaPosition.x * Speedmodifier, -2, 2),
+                    Mathf.Clamp(transform.position.x + touch.deltaPosition.x * Speedmodifier, -2f, 2f),
                     transform.position.y,
                     transform.position.z);
             }
         }
+        //currentTilting *= 0.98f * Time.deltaTime;
+        transform.localRotation = Quaternion.Euler(0f, 0f, currentTilting);
     }
 }
