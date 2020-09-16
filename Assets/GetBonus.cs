@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,5 +15,7 @@ public class GetBonus : MonoBehaviour
 
         float Z = other.gameObject.transform.localScale.z;
         other.gameObject.transform.Translate(0, Z / 2 + nbCube++ * Z, 0, Space.Self);
+
+        GetComponent<Animator>().Play("carBouncing");
     }
 }
